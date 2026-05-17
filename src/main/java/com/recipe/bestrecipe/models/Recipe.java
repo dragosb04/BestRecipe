@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Recipe {
@@ -23,4 +25,8 @@ public class Recipe {
     public Long getCreatorId() {
         return creator != null ? creator.getId() : null;
     }
+
+    @OneToMany(mappedBy = "recipe")
+    @JsonIgnore
+    private List<Favorite> favorites;
 }

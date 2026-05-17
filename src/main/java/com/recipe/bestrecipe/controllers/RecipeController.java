@@ -1,10 +1,10 @@
 package com.recipe.bestrecipe.controllers;
 
+import com.recipe.bestrecipe.dto.RecipeRequest;
 import com.recipe.bestrecipe.models.Recipe;
 import com.recipe.bestrecipe.services.RecipeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +20,12 @@ public class RecipeController {
     public List<Recipe> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
+
+    @PostMapping
+    public ResponseEntity<Recipe> addRecipe(@RequestBody RecipeRequest request) {
+        Recipe savedRecipe = recipeService.createRecipe(request);
+        return ResponseEntity.ok().body(savedRecipe);
+    }
+
+
 }

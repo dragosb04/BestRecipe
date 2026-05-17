@@ -1,11 +1,10 @@
 package com.recipe.bestrecipe.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -20,4 +19,8 @@ public class User {
     private String firstName;
     private String lastName;
     private String bio;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Favorite> favorites;
 }
