@@ -29,4 +29,8 @@ public class Recipe {
     @OneToMany(mappedBy = "recipe")
     @JsonIgnore
     private List<Favorite> favorites;
+
+    @ManyToMany(mappedBy = "recipes")
+    @JsonIgnore
+    private List<RecipeCollection> collections;
 }

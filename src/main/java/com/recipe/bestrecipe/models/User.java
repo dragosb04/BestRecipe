@@ -23,4 +23,10 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Favorite> favorites;
+
+    private String profileImagePath;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<RecipeCollection> collections;
 }
